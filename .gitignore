@@ -1,0 +1,35 @@
+## Ignore Visual Studio temporary files, build results, and
+# User-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# Visual Studio cache/options
+*.VC.db
+
+# Rider/JetBrains
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# DotNet Core
+.project.lock.json
+.project.json
+.nuget/
+*.nupkg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
