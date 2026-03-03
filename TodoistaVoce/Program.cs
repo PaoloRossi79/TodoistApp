@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddControllers();
+// Register in-memory todo repository
+builder.Services.AddSingleton<TodoistaVoce.Services.ITodoRepository, TodoistaVoce.Services.InMemoryTodoRepository>();
 
 var app = builder.Build();
 
@@ -11,6 +14,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.MapControllers();
 
 app.UseHttpsRedirection();
 
