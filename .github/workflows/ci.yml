@@ -37,4 +37,4 @@ jobs:
         with:
           name: .NET Test Results
           path: 'TestResults/*.trx'
-          reporter: 'dotnet trx'
+          reporter: 'dotnet-trx'
