@@ -17,6 +17,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
     if (!string.IsNullOrEmpty(redisPassword)) configuration += ",password=" + redisPassword;
     options.Configuration = configuration;
     options.InstanceName = "Todoista:";
+    
 });
 
 var app = builder.Build();
