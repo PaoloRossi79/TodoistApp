@@ -29,10 +29,12 @@ jobs:
         run: dotnet build TodoistaVoce.slnx --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test TodoistaVoceTests/TodoistaVoceTests.csproj --no-build --verbosity normal
+        run: dotnet test TodoistaVoceTests/TodoistaVoceTests.csproj --no-build --verbosity normal --logger trx --results-directory "TestResults"
 
-      - name: Upload test results (JUnit)
+      - name: Publish test results
         if: always()
-        uses: mikeal/publish-test-results-action@v1
+        uses: dorny/test-reporter@v1
         with:
-          path: '**/TestResults/*.trx'
+          name: .NET Test Results
+          path: 'TestResults/*.trx'
+          reporter: 'dotnet trx'
