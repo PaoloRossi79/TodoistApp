@@ -7,6 +7,18 @@ builder.Services.AddControllers();
 // Register in-memory todo repository
 builder.Services.AddSingleton<TodoistaVoce.Services.ITodoRepository, TodoistaVoce.Services.InMemoryTodoRepository>();
 
+// Configure Redis distributed cache (host/port/password from environment)
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    var redisHost = Environment.GetEnvironmentVariable("REDIS_HOST") ?? "localhost";
+    var redisPort = Environment.GetEnvironmentVariable("REDIS_PORT") ?? "6379";
+    var redisPassword = Environment.GetEnvironmentVariable("REDIS_PASSWORD");
+    var configuration = redisHost + ":" + redisPort;
+    if (!string.IsNullOrEmpty(redisPassword)) configuration += ",password=" + redisPassword;
+    options.Configuration = configuration;
+    options.InstanceName = "Todoista:";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
